@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lip Balm Unicórnio — Campanha Gela Boca 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: #F7F7F7; color: #1B3A5C; padding: 2rem 1rem; }
+  .wrap { max-width: 700px; margin: 0 auto; }
+
+  .header { background: #EC008C; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+  .header::after { content: ''; position: absolute; bottom: -20px; left: 40px; width: 90px; height: 90px; background: rgba(255,215,0,0.18); border-radius: 50%; }
+  .header-tag { display: inline-block; background: rgba(255,255,255,0.22); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; }
+  .header h1 { color: #fff; font-size: 26px; font-weight: 900; line-height: 1.2; margin-bottom: 6px; }
+  .header p { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600; }
+
+  .conceito-box { background: #FFF0F8; border: 2px solid #EC008C; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; text-align: center; }
+  .conceito-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #EC008C; margin-bottom: 6px; }
+  .conceito-titulo { font-size: 24px; font-weight: 900; color: #1B3A5C; margin-bottom: 8px; }
+  .conceito-sub { font-size: 14px; color: #666; line-height: 1.7; }
+
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 1rem; }
+  .divider { height: 1px; background: #E5E5E5; margin: 1.75rem 0; }
+
+  .time-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 2rem; }
+  @media (max-width: 480px) { .time-grid { grid-template-columns: 1fr; } }
+
+  .time-card { background: #fff; border: 1.5px solid #E5E5E5; border-radius: 16px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+  .time-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .tc-adson.active { border-color: #9C27B0; }
+  .tc-caio.active { border-color: #EC008C; }
+  .tc-daiane.active { border-color: #00BCD4; }
+  .tc-giovana.active { border-color: #E6A800; }
+
+  .tc-header { padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; }
+  .time-avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #fff; flex-shrink: 0; }
+  .av-adson { background: #9C27B0; }
+  .av-caio { background: #EC008C; }
+  .av-daiane { background: #00BCD4; }
+  .av-giovana { background: #FFD700; color: #1B3A5C; }
+
+  .tc-info { flex: 1; }
+  .tc-info h4 { font-size: 15px; font-weight: 900; color: #1B3A5C; margin-bottom: 2px; }
+  .tc-info .role { font-size: 11px; color: #888; font-weight: 700; }
+
+  .tc-toggle { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; transition: transform 0.25s; }
+  .tc-adson .tc-toggle { background: #EDE7F6; color: #6A1B9A; }
+  .tc-caio .tc-toggle { background: #FCE4F3; color: #B0006C; }
+  .tc-daiane .tc-toggle { background: #E0F7FA; color: #00838F; }
+  .tc-giovana .tc-toggle { background: #FFFDE7; color: #A07800; }
+  .time-card.active .tc-toggle { transform: rotate(45deg); }
+
+  .tc-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid #F0F0F0; }
+  .time-card.active .tc-body { display: block; }
+
+  .briefing-section { margin-top: 14px; }
+  .briefing-section h5 { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .bs-adson h5 { color: #9C27B0; }
+  .bs-caio h5 { color: #EC008C; }
+  .bs-daiane h5 { color: #00838F; }
+  .bs-giovana h5 { color: #A07800; }
+  .briefing-section p { font-size: 13px; color: #555; line-height: 1.6; }
+
+  .entrega-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .entrega-list li { font-size: 13px; color: #555; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .dot-adson { background: #9C27B0; }
+  .dot-caio { background: #EC008C; }
+  .dot-daiane { background: #00BCD4; }
+  .dot-giovana { background: #FFD700; }
+
+  .prazo-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: 10px; }
+  .pz-adson { background: #EDE7F6; color: #6A1B9A; }
+  .pz-caio { background: #FCE4F3; color: #B0006C; }
+  .pz-daiane { background: #E0F7FA; color: #00838F; }
+  .pz-giovana { background: #FFFDE7; color: #A07800; }
+
+  .fases { display: flex; flex-direction: column; gap: 12px; margin-bottom: 2rem; }
+  .fase { padding: 1.25rem 1.5rem; display: flex; gap: 16px; align-items: flex-start; border-radius: 4px; }
+  .fase-1 { background: #FFF0F8; border-left: 4px solid #EC008C; }
+  .fase-2 { background: #F0FBFD; border-left: 4px solid #00BCD4; }
+  .fase-3 { background: #FFFDF0; border-left: 4px solid #FFD700; }
+  .fase-4 { background: #F5F0FF; border-left: 4px solid #9C27B0; }
+  .fase-num { min-width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #fff; flex-shrink: 0; }
+  .num-1 { background: #EC008C; }
+  .num-2 { background: #00BCD4; }
+  .num-3 { background: #FFD700; color: #1B3A5C; }
+  .num-4 { background: #9C27B0; }
+  .fase-content h3 { font-size: 14px; font-weight: 800; color: #1B3A5C; margin-bottom: 4px; }
+  .fase-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .tag-1 { background: #FCE4F3; color: #B0006C; }
+  .tag-2 { background: #E0F7FA; color: #00838F; }
+  .tag-3 { background: #FFFDE7; color: #A07800; }
+  .tag-4 { background: #EDE7F6; color: #6A1B9A; }
+  .fase-content p { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+  .pecas { display: flex; flex-wrap: wrap; gap: 6px; }
+  .peca { background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 3px 10px; font-size: 11px; font-weight: 700; color: #444; }
+
+  .copies { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+  .copy-card { background: #fff; border: 1px solid #E5E5E5; border-radius: 12px; padding: 1rem 1.25rem; display: flex; gap: 12px; align-items: flex-start; }
+  .copy-fase-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+  .badge-teaser { background: #FCE4F3; color: #B0006C; }
+  .badge-reveal { background: #E0F7FA; color: #00838F; }
+  .badge-ativacao { background: #FFFDE7; color: #A07800; }
+  .badge-pdv { background: #EDE7F6; color: #6A1B9A; }
+  .copy-text { font-size: 13px; color: #1B3A5C; font-weight: 700; line-height: 1.5; }
+  .copy-sub { font-size: 11px; color: #888; margin-top: 4px; }
+
+  .vocab { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
+  @media (max-width: 480px) { .vocab { grid-template-columns: 1fr; } }
+  .vocab-col { border-radius: 14px; padding: 1.25rem; }
+  .vocab-nao { background: #FFF5F5; border: 1px solid #FFCDD2; }
+  .vocab-sim { background: #F0FFF4; border: 1px solid #C8E6C9; }
+  .vocab-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .vocab-nao h4 { color: #C62828; }
+  .vocab-sim h4 { color: #2E7D32; }
+  .vocab-tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 3px 3px 0 0; }
+  .vocab-nao .vocab-tag { background: #FFEBEE; color: #B71C1C; }
+  .vocab-sim .vocab-tag { background: #E8F5E9; color: #1B5E20; }
+
+  .proximos { background: #1B3A5C; border-radius: 16px; padding: 1.75rem; }
+  .proximos h3 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #00BCD4; margin-bottom: 1rem; }
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .step-list li { display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.4; }
+  .step-num { width: 24px; height: 24px; background: #EC008C; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: #fff; flex-shrink: 0; }
+
+  .footer { text-align: center; margin-top: 2rem; font-size: 11px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="header-tag">Gela Boca 2026</div>
+    <h1>Lip Balm Unicórnio<br>Campanha de Lançamento</h1>
+    <p>Público: crianças e pré-adolescentes &nbsp;·&nbsp; Canal: PDV + redes sociais</p>
+  </div>
+
+  <div class="conceito-box">
+    <div class="conceito-label">Conceito-guarda-chuva</div>
+    <div class="conceito-titulo">Doçura que cuida.</div>
+    <div class="conceito-sub">O aroma de marshmallow que você conhece do sorvete, agora nos seus lábios.<br>Frescor, suavidade e cuidado — em um produto só seu.</div>
+  </div>
+
+  <div class="section-title">Time de produção — clique para ver o briefing</div>
+  <div class="time-grid">
+
+    <div class="time-card tc-adson" onclick="toggle(this)">
+      <div class="tc-header">
+        <div class="time-avatar av-adson">AD</div>
+        <div class="tc-info">
+          <h4>Adson</h4>
+          <div class="role">Conceito criativo</div>
+        </div>
+        <div class="tc-toggle">+</div>
+      </div>
+      <div class="tc-body bs-adson">
+        <div class="briefing-section bs-adson">
+          <h5>Missão</h5>
+          <p>Criar o universo visual da campanha. Você define o clima estético que o Caio vai fotografar e a Giovana vai publicar.</p>
+        </div>
+        <div class="briefing-section bs-adson">
+          <h5>Entregáveis</h5>
+          <ul class="entrega-list">
+            <li><span class="dot dot-adson"></span>Moodboard de referência visual (paleta pastel, elementos lúdicos)</li>
+            <li><span class="dot dot-adson"></span>Composição das peças de feed (carrossel de lançamento)</li>
+            <li><span class="dot dot-adson"></span>Templates de stories para teaser e reveal</li>
+            <li><span class="dot dot-adson"></span>Arte do talker e wobler de PDV</li>
+            <li><span class="dot dot-adson"></span>Direção de arte para o set de captação do Caio</li>
+          </ul>
+        </div>
+        <div class="briefing-section bs-adson">
+          <h5>Direção estética</h5>
+          <p>Rosa pastel dominante. Ciano e amarelo como acentos. Estrelas, arco-íris e brilhos como grafismos de suporte. Nenhum elemento escuro. Lúdico, colorido, acessível.</p>
+        </div>
+        <span class="prazo-badge pz-adson">Entrega: antes da captação do Caio</span>
+      </div>
+    </div>
+
+    <div class="time-card tc-caio" onclick="toggle(this)">
+      <div class="tc-header">
+        <div class="time-avatar av-caio">CA</div>
+        <div class="tc-info">
+          <h4>Caio</h4>
+          <div class="role">Foto / Vídeo / Motion</div>
+        </div>
+        <div class="tc-toggle">+</div>
+      </div>
+      <div class="tc-body bs-caio">
+        <div class="briefing-section bs-caio">
+          <h5>Missão</h5>
+          <p>Captar o produto com a estética definida pelo Adson. As fotos e o Reels são a base visual de toda a campanha.</p>
+        </div>
+        <div class="briefing-section bs-caio">
+          <h5>Entregáveis</h5>
+          <ul class="entrega-list">
+            <li><span class="dot dot-caio"></span>Fotos do produto em cena (mínimo 10 variações de enquadramento)</li>
+            <li><span class="dot dot-caio"></span>Fotos para carrossel de lançamento (fundo pastel, props de apoio)</li>
+            <li><span class="dot dot-caio"></span>Reels de reveal 15s (produto + textura + frescor, sem narração)</li>
+            <li><span class="dot dot-caio"></span>Clipes situacionais para fase de ativação (depois do sorvete, praia, escola)</li>
+          </ul>
+        </div>
+        <div class="briefing-section bs-caio">
+          <h5>Referência de set</h5>
+          <p>Fundo rosa pastel ou branco. Props: donut, casquinha de sorvete, marshmallow, estrelinhas decorativas. Luz suave, sem sombra dura. Clima de doçura e leveza.</p>
+        </div>
+        <span class="prazo-badge pz-caio">Entrega: antes do dia de reveal</span>
+      </div>
+    </div>
+
+    <div class="time-card tc-daiane" onclick="toggle(this)">
+      <div class="tc-header">
+        <div class="time-avatar av-daiane">DA</div>
+        <div class="tc-info">
+          <h4>Daiane</h4>
+          <div class="role">Copywriter</div>
+        </div>
+        <div class="tc-toggle">+</div>
+      </div>
+      <div class="tc-body bs-daiane">
+        <div class="briefing-section bs-daiane">
+          <h5>Missão</h5>
+          <p>Escrever todos os textos da campanha. Tom leve, afetuoso, direto. Público: crianças, pré-adolescentes e pais.</p>
+        </div>
+        <div class="briefing-section bs-daiane">
+          <h5>Entregáveis</h5>
+          <ul class="entrega-list">
+            <li><span class="dot dot-daiane"></span>Copies de teaser (3 stories, sem revelar o produto)</li>
+            <li><span class="dot dot-daiane"></span>Copy de reveal (legenda do feed + texto do Reels)</li>
+            <li><span class="dot dot-daiane"></span>Textos do carrossel de lançamento (6 slides)</li>
+            <li><span class="dot dot-daiane"></span>Copies situacionais para Reels de ativação</li>
+            <li><span class="dot dot-daiane"></span>Frases de PDV (talker e wobler)</li>
+            <li><span class="dot dot-daiane"></span>Comunicado operacional para franqueados (WhatsApp)</li>
+          </ul>
+        </div>
+        <div class="briefing-section bs-daiane">
+          <h5>Tom e vocabulário</h5>
+          <p>Usar: doçura, frescor, suavidade, cuidado, alegria, especial, arco-íris.<br>Evitar: magia, ritual, encantamento, feitiço, mágico.</p>
+        </div>
+        <span class="prazo-badge pz-daiane">Entrega: junto com as artes do Adson</span>
+      </div>
+    </div>
+
+    <div class="time-card tc-giovana" onclick="toggle(this)">
+      <div class="tc-header">
+        <div class="time-avatar av-giovana">GI</div>
+        <div class="tc-info">
+          <h4>Giovana</h4>
+          <div class="role">Social Media</div>
+        </div>
+        <div class="tc-toggle">+</div>
+      </div>
+      <div class="tc-body bs-giovana">
+        <div class="briefing-section bs-giovana">
+          <h5>Missão</h5>
+          <p>Gerir a publicação da campanha e o engajamento com o UGC. A ponte entre o conteúdo produzido e o público.</p>
+        </div>
+        <div class="briefing-section bs-giovana">
+          <h5>Entregáveis</h5>
+          <ul class="entrega-list">
+            <li><span class="dot dot-giovana"></span>Calendário de publicação das 4 fases</li>
+            <li><span class="dot dot-giovana"></span>Agendamento dos stories de teaser (5 dias antes)</li>
+            <li><span class="dot dot-giovana"></span>Publicação do reveal (feed + Reels + stories no mesmo dia)</li>
+            <li><span class="dot dot-giovana"></span>Gestão do UGC challenge (monitorar tag, selecionar posts, divulgar ganhadores)</li>
+            <li><span class="dot dot-giovana"></span>Reels situacionais nas semanas de ativação</li>
+          </ul>
+        </div>
+        <div class="briefing-section bs-giovana">
+          <h5>Mecânica UGC</h5>
+          <p>Quem postar com a tag da Gela Boca segurando o lip balm concorre a sacolada ou pote grátis. Sorteio semanal durante a fase de ativação.</p>
+        </div>
+        <span class="prazo-badge pz-giovana">Entrega: calendário antes do teaser</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Arquitetura da campanha — 4 fases</div>
+  <div class="fases">
+    <div class="fase fase-1">
+      <div class="fase-num num-1">1</div>
+      <div class="fase-content">
+        <span class="fase-tag tag-1">Teaser · 5 dias antes</span>
+        <h3>O mistério cor-de-rosa</h3>
+        <p>Stories com elementos pastéis sem revelar o produto. Último dia: caixinha rosa com a frase "Chegou algo muito especial."</p>
+        <div class="pecas">
+          <span class="peca">3 stories de teaser</span>
+          <span class="peca">Motion de névoa rosa</span>
+          <span class="peca">Countdown no feed</span>
+        </div>
+      </div>
+    </div>
+    <div class="fase fase-2">
+      <div class="fase-num num-2">2</div>
+      <div class="fase-content">
+        <span class="fase-tag tag-2">Reveal · Dia do lançamento</span>
+        <h3>Apresentação do produto</h3>
+        <p>Post oficial no feed, Reels 15s e stories. Display ativado no PDV no mesmo dia.</p>
+        <div class="pecas">
+          <span class="peca">Carrossel feed</span>
+          <span class="peca">Reels 15s</span>
+          <span class="peca">Stories reveal</span>
+          <span class="peca">Display PDV</span>
+        </div>
+      </div>
+    </div>
+    <div class="fase fase-3">
+      <div class="fase-num num-3">3</div>
+      <div class="fase-content">
+        <span class="fase-tag tag-3">Ativação · 2 semanas</span>
+        <h3>Sua dose de doçura</h3>
+        <p>Reels situacionais + UGC challenge. Quem postar com a tag concorre a sacolada ou pote grátis.</p>
+        <div class="pecas">
+          <span class="peca">4 Reels situacionais</span>
+          <span class="peca">UGC challenge</span>
+          <span class="peca">Talker PDV</span>
+          <span class="peca">Wobler de gôndola</span>
+        </div>
+      </div>
+    </div>
+    <div class="fase fase-4">
+      <div class="fase-num num-4">4</div>
+      <div class="fase-content">
+        <span class="fase-tag tag-4">Consolidação · semana 3 em diante</span>
+        <h3>Produto como parte da rotina</h3>
+        <p>Lip balm integrado ao universo principal. Kit de comunicação para franqueados.</p>
+        <div class="pecas">
+          <span class="peca">Kit PDV franqueados</span>
+          <span class="peca">Post mensal de reforço</span>
+          <span class="peca">Integração ao cardápio digital</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Copies de referência</div>
+  <div class="copies">
+    <div class="copy-card">
+      <span class="copy-fase-badge badge-teaser">Teaser</span>
+      <div>
+        <div class="copy-text">Algo muito especial está chegando pra Gela Boca. Em breve.</div>
+        <div class="copy-sub">Stories · sem produto visível · só cor e sensação</div>
+      </div>
+    </div>
+    <div class="copy-card">
+      <span class="copy-fase-badge badge-reveal">Reveal</span>
+      <div>
+        <div class="copy-text">Doçura que cuida. O Lip Balm Unicórnio chegou — com gostinho de marshmallow, frescor de verdade e hidratação nos seus lábios.</div>
+        <div class="copy-sub">Post feed + Reels · dia do lançamento</div>
+      </div>
+    </div>
+    <div class="copy-card">
+      <span class="copy-fase-badge badge-ativacao">Ativação</span>
+      <div>
+        <div class="copy-text">Depois do sorvete, a boca merece carinho também. Mostre o seu lip balm e marque a gente.</div>
+        <div class="copy-sub">UGC challenge · stories e Reels situacionais</div>
+      </div>
+    </div>
+    <div class="copy-card">
+      <span class="copy-fase-badge badge-pdv">PDV</span>
+      <div>
+        <div class="copy-text">Doçura que cuida. Só na Gela Boca.</div>
+        <div class="copy-sub">Talker de balcão · wobler de gôndola</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Vocabulário aprovado</div>
+  <div class="vocab">
+    <div class="vocab-col vocab-nao">
+      <h4>Não usar</h4>
+      <span class="vocab-tag">magia</span>
+      <span class="vocab-tag">ritual</span>
+      <span class="vocab-tag">encantamento</span>
+      <span class="vocab-tag">feitiço</span>
+      <span class="vocab-tag">mágico</span>
+    </div>
+    <div class="vocab-col vocab-sim">
+      <h4>Usar sempre</h4>
+      <span class="vocab-tag">doçura</span>
+      <span class="vocab-tag">frescor</span>
+      <span class="vocab-tag">suavidade</span>
+      <span class="vocab-tag">cuidado</span>
+      <span class="vocab-tag">alegria</span>
+      <span class="vocab-tag">leveza</span>
+      <span class="vocab-tag">especial</span>
+      <span class="vocab-tag">arco-íris</span>
+      <span class="vocab-tag">sonho</span>
+    </div>
+  </div>
+
+  <div class="proximos">
+    <h3>Próximos passos</h3>
+    <ul class="step-list">
+      <li><span class="step-num">1</span>Aprovar conceito com a liderança direta</li>
+      <li><span class="step-num">2</span>Adson inicia moodboard e direção de arte</li>
+      <li><span class="step-num">3</span>Caio agenda set de captação com base no moodboard</li>
+      <li><span class="step-num">4</span>Daiane recebe briefing de copies por fase</li>
+      <li><span class="step-num">5</span>Giovana monta calendário de publicação</li>
+      <li><span class="step-num">6</span>Travar data de lançamento para sincronizar tudo</li>
+    </ul>
+  </div>
+
+  <div class="footer">Dona Maria Digital · Gela Boca 2026</div>
+
+</div>
+
+<script>
+  function toggle(card) {
+    var isActive = card.classList.contains('active');
+    document.querySelectorAll('.time-card').forEach(function(c) { c.classList.remove('active'); });
+    if (!isActive) { card.classList.add('active'); }
+  }
+</script>
+</body>
+</html>
